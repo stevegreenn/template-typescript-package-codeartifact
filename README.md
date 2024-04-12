@@ -34,6 +34,8 @@ privileges to publish packages to AWS CodeArtifact.
 6. Add repository secrets to your GitHub actions settings:
    - `AWS_ACCESS_KEY_ID`: The AWS access key ID with sufficient permissions to publish to the AWS CodeArtifact repository.
    - `AWS_SECRET_ACCESS_KEY`: The AWS secret access key corresponding to the access key ID.
+7. Add a repository variable to your GitHub action settings:
+   - `AWS_REGION`: The AWS region where the CodeArtifact repository exists.
 7. Commit your changes and push to the master branch.
 
 ## Usage 📚
