@@ -30,6 +30,7 @@ privileges to publish packages to AWS CodeArtifact.
 2. Clone the new repository to your local machine.
 3. Install dependencies by running `pnpm install`.
 4. Configure the `package.json` file with your package details.
+   - Ensure the `name` field is scoped (e.g. `@scope/package-name`).
 5. Update `.releaserc.json` with your CodeArtifact domain and repository name.
 6. Add repository secrets to your GitHub actions settings:
    - `AWS_ACCESS_KEY_ID`: The AWS access key ID with sufficient permissions to publish to the AWS CodeArtifact repository.
