@@ -1,0 +1,37 @@
+{
+  "name": "template-typescript-package-codeartifact",
+  "version": "1.0.0",
+  "description": "A template for creating a TypeScript privately published package with Semantic Release and CodeArtifact",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
+    "format": "prettier --write 'src/**/*.{ts,tsx}'",
+    "format:check": "prettier --check 'src/**/*.{ts,tsx}'",
+    "release": "semantic-release"
+  },
+  "author": "Steve Green <steve@cloudminded.engineering>",
+  "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
+    "semantic-release": "^23.0.8",
+    "semantic-release-codeartifact": "^2.0.17",
+    "typescript": "^5.4.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
