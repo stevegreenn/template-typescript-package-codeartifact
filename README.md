@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-This repository serves as a template for creating and publishing private NPM packages to AWS CodeArtifact. It includes a
+This repository serves as a template for creating and publishing private NPM packages to AWS CodeArtifact. It includes an
 authorisation script essential for authorising build runners with AWS CodeArtifact, allowing seamless access and 
 installation of private packages.
 
@@ -14,7 +14,7 @@ installation of private packages.
 - 📜 **TypeScript**: Strong typing with modern JavaScript.
 - ✨ **Code Quality**: ESLint and Prettier integration.
 - 📦 **PNPM**: Efficient package management.
-- 📝 **Commitizen**: Standardized commit messages.
+- 📝 **Commitizen**: Standardised commit messages.
 
 ## Prerequisites 📋
 
