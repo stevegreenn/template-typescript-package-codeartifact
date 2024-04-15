@@ -121,11 +121,12 @@ To use the private package in a Render webservice, you must set the environment 
 Additionally, you must also install the AWS CLI into the build environment as part of running the build command. Unfortunately,
 this is not something that Render support particularly well, so the workaround is a little bit... dodgy.
 
-The command downloads the AWS CLI, installs it, and then runs the authorisation script; it then installs the package using pnpm.
+The command downloads the AWS CLI & installs it (if not already present in the build cache), and then runs the authorisation 
+script; it then installs the package using pnpm.
 
 The build command should be set to this (if using pnpm):
 ```bash
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install -i ~/aws-cli -b ~/bin && export PATH=$PATH:~/bin && aws --version && ./scripts/codeartifact-authorise.sh && pnpm install --frozen-lockfile; pnpm run build
+if [ ! -f ~/bin/aws ]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install -i ~/aws-cli -b ~/bin && export PATH=$PATH:~/bin; fi; export PATH=$PATH:~/bin; ~/bin/aws --version && ./scripts/codeartifact-authorise.sh && pnpm install --frozen-lockfile && pnpm run build
 ```
 
 #### GitHub Actions 🚀
