@@ -128,6 +128,28 @@ The build command should be set to this (if using pnpm):
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install -i ~/aws-cli -b ~/bin && export PATH=$PATH:~/bin && aws --version && ./scripts/codeartifact-authorise.sh && pnpm install --frozen-lockfile; pnpm run build
 ```
 
+#### GitHub Actions 🚀
+To use the private package in a GitHub Actions workflow, you must set the environment variables in the GitHub repository settings.
+Then, you can use the following step in your workflow to authenticate with AWS CodeArtifact before installing the package:
+
+```yaml
+- name: Setup the AWS CLI
+  run: |
+    sudo apt-get update
+    sudo apt-get install -y awscli
+    aws --version
+
+- name: Authenticate with AWS CodeArtifact
+  run: ./scripts/codeartifact-authorise.sh
+  env:
+    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    AWS_REGION: ${{ vars.AWS_REGION }}
+```
+
+This is assuming your workflow is running on an Ubuntu runner. If you are using a different runner, you may need to adjust the
+commands accordingly (i.e. use `yum` or `dnf` instead of `apt-get`).
+
 ## License 📄
 
 Distributed under the MIT License. See `LICENSE` for more information.
